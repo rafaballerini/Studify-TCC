@@ -1,0 +1,36 @@
+{
+  "name": "studify",
+  "version": "1.0.0",
+  "description": "Discord bot for programming study",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaballerini/studify-bot.git"
+  },
+  "keywords": [
+    "discord-bot",
+    "studify",
+    "study",
+    "bot",
+    "js-bot",
+    "discord",
+    "discordjs",
+    "study-bot"
+  ],
+  "author": "Rafaella Ballerini",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaballerini/studify-bot/issues"
+  },
+  "homepage": "https://github.com/rafaballerini/studify-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.32.0"
+  }
+}
