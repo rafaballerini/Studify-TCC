@@ -30,8 +30,10 @@ client.login(TOKEN);
 
 // Listener de interações com o bot
 client.on(Events.InteractionCreate, async interaction => {
-	// if (interaction.isStringSelectMenu()) {
-	// 	const selected = interaction.values[0];
+	if (interaction.isStringSelectMenu()) {
+		const selected = interaction.values[0];
+		buscaDocs(selected, interaction);
+	}
 	// 	if (selected == 'javascript') {
 	// 		await interaction.reply('Documentação do Javascript: https://developer.mozilla.org/en-US/docs/Web/JavaScript');
 	// 	}
@@ -59,3 +61,14 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply('Houve um erro ao executar esse comando!');
 	}
 });
+
+async function buscaDocs(linguagem, interaction) {
+	const docs = {
+		'javascript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+		'python': 'https://www.python.org',
+		'csharp': 'https://learn.microsoft.com/en-us/dotnet/csharp/',
+		'discordjs': 'https://discordjs.guide/',
+		'java': 'https://docs.oracle.com/en/java/',
+	};
+	await interaction.reply(`Aqui está a documentação de ${linguagem}: ${docs[linguagem]}`);
+}
