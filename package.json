@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/rafaballerini/studify-bot#readme",
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.34",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3"
   },
