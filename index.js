@@ -31,6 +31,12 @@ client.login(TOKEN);
 // Listener de interações com o bot
 client.on(Events.InteractionCreate, async interaction => {
 
+	if (interaction.isButton()) {
+		console.log(interaction);
+		const pressed = interaction.customId;
+		buttonLinks(pressed, interaction);
+	}
+
 	if (interaction.isStringSelectMenu()) {
 		const selected = interaction.values[0];
 		buscaDocs(selected, interaction);
@@ -51,7 +57,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-async function buscaDocs(linguagem, interaction) {
+async function buscaDocs(selected, interaction) {
 	const docs = {
 		'javascript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
 		'python': 'https://www.python.org',
@@ -59,5 +65,10 @@ async function buscaDocs(linguagem, interaction) {
 		'discordjs': 'https://discordjs.guide/',
 		'java': 'https://docs.oracle.com/en/java/',
 	};
-	await interaction.reply(`Aqui está a documentação de ${linguagem}: ${docs[linguagem]}`);
+	await interaction.reply(`Aqui está a documentação de ${selected}: ${docs[selected]}`);
+}
+
+// desenvolver a partir daqui
+async function buttonLinks(pressed, interaction) {
+	await interaction.reply(`Aqui está a documentação de ${pressed}`);
 }
