@@ -1,11 +1,11 @@
 # Studify - Seu Melhor Parceiro de Estudos de Programação!
 
 ## Features:
-* 🍅 **Técnica pomodoro para estudos:** /pomodoro config | pomodoro start
+* 🍅 **Técnica pomodoro para estudos:** /pomodoro config | /pomodoro start
 * 💡 **Quiz para você descobrir qual área se encaixa com seu perfil:** /quiz start | /quiz help
 * 🛤️ **Guia para saber o que estudar dependendo da área que você quer seguir:** /techguide
-* 📊 **Estatísticas de quanto você estudou:**
-* 🎩 **Personalização do perfil:**
+* 📊 **Estatísticas de quanto você estudou:** /stats
+* 🎩 **Personalização do perfil:** /profile | /profile config
 
 
 ## Tecnologias Utilizadas:
