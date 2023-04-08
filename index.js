@@ -1,4 +1,4 @@
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
+const { Client, Events, GatewayIntentBits, Collection, ActionRowBuilder, StringSelectMenuBuilder} = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
 const { TOKEN } = process.env;
@@ -30,16 +30,22 @@ client.login(TOKEN);
 
 // Listener de interações com o bot
 client.on(Events.InteractionCreate, async interaction => {
+	// IF EMPREGO INICIADO
 
 	if (interaction.isButton()) {
-		console.log(interaction);
 		const pressed = interaction.customId;
-		buttonLinks(pressed, interaction);
+		buscaGuide(pressed, interaction);
 	}
 
 	if (interaction.isStringSelectMenu()) {
-		const selected = interaction.values[0];
-		buscaDocs(selected, interaction);
+		if (interaction.customId == 'backendGuides') {
+			const techSelecionada = interaction.values[0];
+			buscaTechSelecionada(techSelecionada, interaction);
+		}
+		else if (interaction.customId == 'docs') {
+			const selected = interaction.values[0];
+			buscaDocs(selected, interaction);
+		}
 	}
 
 	if (!interaction.isChatInputCommand()) return;
@@ -69,6 +75,49 @@ async function buscaDocs(selected, interaction) {
 }
 
 // desenvolver a partir daqui
-async function buttonLinks(pressed, interaction) {
-	await interaction.reply(`Aqui está a documentação de ${pressed}`);
+async function buscaGuide(pressed, interaction) {
+	const guides = {
+		'frontend': 'https://techguide.sh/pt-BR/path/front-end/',
+		'backend': '',
+	};
+	if (pressed == 'backend') {
+		const row = new ActionRowBuilder()
+			.addComponents(
+				new StringSelectMenuBuilder()
+					.setCustomId('backendGuides')
+					.setPlaceholder('Nenhuma tecnologia selecionada')
+					.addOptions({
+						label: 'C#',
+						description: 'Veja o guia de estudos de C# ',
+						value: 'csharp',
+					},
+					{
+						label: 'Python',
+						description: 'Veja o guia de estudos de Python',
+						value: 'python',
+					},
+					{
+						label: 'PHP',
+						description: 'Veja o guia de estudos de PHP',
+						value: 'php',
+					},
+					{
+						label: 'Node.js',
+						description: 'Veja o guia de estudos de Node.js',
+						value: 'nodejs',
+					},
+					{
+						label: 'Java',
+						description: 'Veja a documentação de Java',
+						value: 'java',
+					},
+					),
+			);
+		await interaction.reply({ content: 'Selecione uma das tecnologias abaixo para visualizar seu guia de estudos:', components: [row] });
+	}
+	await interaction.reply(`Guia de ${pressed} para você seguir com seus estudos: ${guides[pressed]}`);
+}
+
+async function buscaTechSelecionada(techSelecionada, interaction) {
+	await interaction.reply(`Guia de ${techSelecionada} para você seguir com seus estudos: https://techguide.sh/pt-BR/path/${techSelecionada}`);
 }

@@ -3,7 +3,7 @@ const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder } = requi
 const row = new ActionRowBuilder()
 	.addComponents(
 		new StringSelectMenuBuilder()
-			.setCustomId('select')
+			.setCustomId('docs')
 			.setPlaceholder('Nenhuma linguagem selecionada')
 			.addOptions({
 				label: 'Javascript',
