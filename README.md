@@ -41,3 +41,14 @@ Nesse caso você deverá criar um bot pela sua conta do Discord e com ele utiliz
 5. Crie uma conta no [Discord Developer Portal](https://discord.com/developers/docs/intro), criando também uma aplicação e bot. Para isso você pode seguir o [passo a passo](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiN5-fr9Jr-AhXXqJUCHXJdBAQQqJcEKAN6BAgLEBc&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzKOf1NGGStE%26t%3D640&usg=AOvVaw1SJCgJhuMIz-xHfOzQYaH4)
 6. Coloque no arquivo `.env` os seguintes códigos disponíveis no seu Discord Developer Portal: `TOKEN` e `CLIENT_ID`. Para isso você pode seguir o [passo a passo](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiN5-fr9Jr-AhXXqJUCHXJdBAQQqJcEKAR6BAgLEBo&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzKOf1NGGStE%26t%3D1087&usg=AOvVaw0m7-tesBpy_1pZcTTwADOw), sem necessidade de buscar o `GUILD_ID`
 7. Desenvolva sua ideia e, ao final, faça um pull request aqui nesse repositório para ser analisada e, posteriormente, aprovada!
+
+## Sobre mim
+
+Sou a Rafaella Ballerini, trabalho como criadora de conteúdo de programação e sou instrutora externa na [Alura](https://alura.com.br/promocao/rafaballerini), formada em ADS e finalizando meu TCC em Engenharia de Software, além de estar cursando pós graduação em Software Architecture
+
+Recentemente recebi o título de [Github Star](https://github.com/rafaballerini) 🎖️ pelo trabalho que venho desenvolvendo na comunidade de tecnologia brasileira e espero cada vez mais impactar a vida de pessoas desenvolvedoras!
+
+Você pode acompanhar meu conteúdo no [canal do Youtube](https://youtube.com/rafaellaballerini) e também fazer parte da [nossa comunidade do Discord](https://discord.com/servers/ballerini-789888698673922078
+)
+
+O Studify foi criado com o intuito de auxiliar jovens pessoas desenvolvedoras a estudarem de uma forma gamificada e motivadora, utilizando o próprio Discord como ferramenta. Será o projeto base para apresentação do meu TCC em Engenharia de Software e posteriormetne estará aberto para contribuições open-source!
