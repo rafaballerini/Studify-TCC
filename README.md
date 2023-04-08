@@ -1,5 +1,5 @@
 ![Studify banner](https://i.pinimg.com/originals/16/89/5b/16895b231b6da505e2e4acef02a3c1fe.gif)
-# Studify: Seu Melhor Parceiro de Estudos de Programação!
+# Studify: Seu Parceiro de Estudos de Programação!
 
 ## Features básicas:
 Algumas das ferramentas disponíveis para utilização pelo bot, caso queira apenas utilizá-lo nos estudos do dia a dia, sem utilizar a sua função gamificada
