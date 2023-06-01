@@ -1,7 +1,7 @@
 ![Studify banner](https://i.pinimg.com/originals/16/89/5b/16895b231b6da505e2e4acef02a3c1fe.gif)
 # Studify: Seu Parceiro de Estudos de Programação!
 
-## Features básicas:
+## Features para estudos:
 Algumas das ferramentas disponíveis para utilização pelo bot, caso queira apenas utilizá-lo nos estudos do dia a dia, sem utilizar a sua função gamificada
 * 🍅 **Técnica pomodoro para estudos:** /pomodoro config /pomodoro iniciar
 * 💡 **Quiz para você descobrir qual área se encaixa com seu perfil:** /quiz
