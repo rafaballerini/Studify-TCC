@@ -5,44 +5,37 @@ const { request } = require('undici');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('perfil')
-		.setDescription('Visualize seu perfil'),
+		.setDescription('Visualize as estatísticas do seu perfil'),
 
 	async execute(interaction) {
 
 		// cria a imagem e o fundo
-		const canvas = Canvas.createCanvas(700, 250);
+		const canvas = Canvas.createCanvas(1576, 700);
 		const context = canvas.getContext('2d');
-		const background = await Canvas.loadImage('./assets/canvas.jpg');
+		const background = await Canvas.loadImage('./assets/coffeehouse.png');
 		context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-		// borda branca
-		context.strokeStyle = '#ffffff';
-		context.strokeRect(0, 0, canvas.width, canvas.height);
-
-		// escrever "perfil de"
-		context.font = '28px sans-serif';
-		context.fillStyle = '#ffffff';
-		context.fillText('Perfil de', canvas.width / 2.5, canvas.height / 3.5);
-		context.font = applyText(canvas, `${interaction.member.displayName}!`);
-		context.fillStyle = '#ffffff';
-		context.fillText(`${interaction.member.displayName}!`, canvas.width / 2.5, canvas.height / 1.8);
-
 		// escrever nome do usuário
-		context.font = applyText(canvas, interaction.member.displayName);
+		context.font = '20px sans-serif';
 		context.fillStyle = '#ffffff';
-		context.fillText(interaction.member.displayName, canvas.width / 2.5, canvas.height / 1.8);
+		context.font = applyText(canvas, `${interaction.member.displayName}!`);
+		context.fillText(`${interaction.member.displayName}`, 1250, 80);
 
-		// desenhar círculo para imagem de perfil
+		// escrever cargo do usuário
+		context.font = '36px sans-serif';
+		context.fillStyle = '#ffffff';
+		context.fillText(`Desenvolvedora front-end`, 1110, 140);
+
+		//desenhar círculo para imagem 1
 		context.beginPath();
-		context.arc(125, 125, 100, 0, Math.PI * 2, true);
+		context.arc(1130, 220, 50, 0, Math.PI * 2, true);
 		context.closePath();
 		context.clip();
-
-		// imagem de perfil
+		//imagem 1
 		const { body } = await request(interaction.user.displayAvatarURL({ extension: 'jpg' }));
 		const avatar = await Canvas.loadImage(await body.arrayBuffer());
-		context.drawImage(avatar, 25, 0, 200, canvas.height);
-		context.drawImage(avatar, 25, 25, 200, 200);
+		context.drawImage(avatar, 25, 0, canvas.height, canvas.height);
+		context.drawImage(avatar, 25, 25, 1200, 270);
 
 		// cria o arquivo de imagem
 		const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'profile-image.png' });
