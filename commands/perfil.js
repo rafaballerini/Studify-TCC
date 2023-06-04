@@ -26,29 +26,46 @@ module.exports = {
 		context.fillStyle = '#ffffff';
 		context.fillText(`Desenvolvedora front-end`, 1110, 140);
 
-		//desenhar círculo para imagem 1
-		context.beginPath();
-		context.arc(1130, 220, 50, 0, Math.PI * 2, true);
-		context.closePath();
-		context.clip();
-		//imagem 1
+		// escrever salário do usuário
+		const salario = await Canvas.loadImage('./assets/money.png');
+		context.drawImage(salario, 1300, 310, 50, 50);
+		context.font = '28px sans-serif';
+		context.fillText(`Salário: 100k/hora`, 1200, 400);
+
+		// escrever acumulado do usuário
+		const acumulado = await Canvas.loadImage('./assets/piggy-bank.png');
+		context.drawImage(acumulado, 1300, 440, 50, 50);
+		context.font = '28px sans-serif';
+		context.fillText(`Acumulado: 100k`, 1210, 530);
+
+		// escrever minutos estudados do usuário
+		const minutos = await Canvas.loadImage('./assets/pomodoro.png');
+		context.drawImage(minutos, 1300, 570, 50, 50);
+		context.font = '28px sans-serif';
+		context.fillText(`Minutos estudados: 500`, 1180, 660);
+
+		//Badges
 		const { body } = await request(interaction.user.displayAvatarURL({ extension: 'jpg' }));
 		const avatar = await Canvas.loadImage(await body.arrayBuffer());
-		context.drawImage(avatar, 25, 0, canvas.height, canvas.height);
-		context.drawImage(avatar, 25, 25, 1200, 270);
+		context.drawImage(avatar, 1080, 200, 80, 80);
+		context.drawImage(avatar, 1180, 200, 80, 80);
+		context.drawImage(avatar, 1280, 200, 80, 80);
+		context.drawImage(avatar, 1380, 200, 80, 80);
+		context.drawImage(avatar, 1480, 200, 80, 80);
 
-		// cria o arquivo de imagem
-		const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'profile-image.png' });
+		// cria o arquivo da imagem final
+		const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'perfil.png' });
 		await interaction.reply({ files: [attachment] });
+		
 	},
 };
 
 // fazer o nome do usuário caber na imagem
 const applyText = (canvas, text) => {
-	const context = canvas.getContext('2d');
-	let fontSize = 70;
-	do {
-		context.font = `${fontSize -= 10}px sans-serif`;
-	} while (context.measureText(text).width > canvas.width - 300);
-	return context.font;
+const context = canvas.getContext('2d');
+let fontSize = 70;
+do {
+	context.font = `${fontSize -= 10}px sans-serif`;
+} while (context.measureText(text).width > canvas.width - 300);
+return context.font;
 };
