@@ -9,6 +9,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const app = require('./src/app.js');
+const port = process.env.PORT || 3000;
+// const Personagem = require('./src/models/Personagem.js')
+
+app.listen(port, () => {
+  console.log(`Servidor escutando em http://localhost:${port}`)
+})
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -29,49 +36,50 @@ client.once(Events.ClientReady, c => {
 
 client.login(TOKEN);
 client.on(Events.InteractionCreate, async interaction => {
-	// IF EMPREGO INICIADO
-	if (interaction.isButton()) {
-		if (interaction.message.interaction.commandName == 'techguide'){
-			const pressed = interaction.customId;
-			console.log(pressed)
-			guide.buscaGuide(pressed, interaction);
+	// if (await Personagem.findOne({ personagemId: interaction.user.id})){
+		if (interaction.isButton()) {
+			if (interaction.message.interaction.commandName == 'techguide'){
+				const pressed = interaction.customId;
+				console.log(pressed)
+				guide.buscaGuide(pressed, interaction);
+			}
+			else if (interaction.customId == 'pomodoro'){
+				const foco = interaction.customId
+				// cria arquivo com função de configuração do pomodoro
+			}
 		}
-		else if (interaction.customId == 'pomodoro'){
-			const foco = interaction.customId
-			// cria arquivo com função de configuração do pomodoro
+
+		if (interaction.isStringSelectMenu()) {
+			if (interaction.customId == 'backendGuides' || interaction.customId == 'mobileGuides') {
+				const techSelecionada = interaction.values[0];
+				techguide.buscaTechSelecionada(techSelecionada, interaction);
+			}
+			else if (interaction.customId == 'docs') {
+				const selected = interaction.values[0];
+				documentacao.buscaDocs(selected, interaction);
+			}
 		}
-	}
 
-	if (interaction.isStringSelectMenu()) {
-		if (interaction.customId == 'backendGuides' || interaction.customId == 'mobileGuides') {
-			const techSelecionada = interaction.values[0];
-			techguide.buscaTechSelecionada(techSelecionada, interaction);
+		if (interaction.isModalSubmit()) {
+			await interaction.reply({ content: 'Lembrete adicionado com sucesso!' });
+			const lembreteTitulo = interaction.fields.getTextInputValue('tituloLembrete');
+			const lembreteConteudo = interaction.fields.getTextInputValue('conteudoLembrete');
+			console.log({ lembreteTitulo, lembreteConteudo });
 		}
-		else if (interaction.customId == 'docs') {
-			const selected = interaction.values[0];
-			documentacao.buscaDocs(selected, interaction);
+
+		if (!interaction.isChatInputCommand()) return;
+		const command = interaction.client.commands.get(interaction.commandName);
+		if (!command) {
+			console.error('Comando não encontrado');
+			return;
+		} 
+
+		try {
+			await command.execute(interaction);
 		}
-	}
-
-	if (interaction.isModalSubmit()) {
-		await interaction.reply({ content: 'Lembrete adicionado com sucesso!' });
-		const lembreteTitulo = interaction.fields.getTextInputValue('tituloLembrete');
-		const lembreteConteudo = interaction.fields.getTextInputValue('conteudoLembrete');
-		console.log({ lembreteTitulo, lembreteConteudo });
-	}
-
-	if (!interaction.isChatInputCommand()) return;
-	const command = interaction.client.commands.get(interaction.commandName);
-	if (!command) {
-		console.error('Comando não encontrado');
-		return;
-	} 
-
-	try {
-		await command.execute(interaction);
-	}
-	catch (error) {
-		console.error(error);
-		await interaction.reply('Houve um erro ao executar esse comando!');
-	}
-});
+		catch (error) {
+			console.error(error);
+			await interaction.reply('Houve um erro ao executar esse comando!');
+		}
+	// }
+})
