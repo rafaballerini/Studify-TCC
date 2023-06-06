@@ -14,7 +14,8 @@ module.exports = {
                 personagemId: interaction.user.id,
                 personagemUsername: interaction.user.username,
                 personagemCargo: "Estagiário(a)",
-				personagemPlanoFundo: 0,
+				personagemPlanoFundo: "basico",
+				personagemPlanosFundoComprados: ["basico"],
 				personagemSistemaOperacional: 0,
 				personagemCafeina: 0,
 				personagemPerifericos: [],
@@ -39,9 +40,9 @@ Utilize o comando **/comandos** para descobrir tudo o que pode fazer a partir de
             }
         } else {
             await interaction.reply({
-                content: `❗️ **${personagemProfile.personagemUsername}, você já iniciou seu primeiro emprego como ${personagemProfile.personagemCargo}!**
+                content: `❗️ **${personagemProfile.personagemUsername}, você já iniciou seu primeiro emprego e hoje está trabalhando como ${personagemProfile.personagemCargo}!**
 
-Utilize o comando **/comandos** para descobrir tudo o que pode fazer a partir de agora para aumentar o seu **cargo** e **salário**`
+Utilize o comando **/comandos** para descobrir tudo o que pode fazer para aumentar o seu **cargo** e **salário**`
             })
         }
 	},

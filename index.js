@@ -1,6 +1,8 @@
 const documentacao = require('./functions/buscaDocs');
 const techguide = require('./functions/techguideBasics')
 const guide = require('./functions/buscaGuide')
+const adicionaPlanoFundo = require('./functions/adicionaPlanoFundo.js')
+const alteraPlanoFundo = require('./functions/alteraPlanoFundo.js')
 const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -40,12 +42,17 @@ client.on(Events.InteractionCreate, async interaction => {
 		if (interaction.isButton()) {
 			if (interaction.message.interaction.commandName == 'techguide'){
 				const pressed = interaction.customId;
-				console.log(pressed)
 				guide.buscaGuide(pressed, interaction);
 			}
 			else if (interaction.customId == 'pomodoro'){
 				const foco = interaction.customId
 				// cria arquivo com função de configuração do pomodoro
+			} else if (interaction.message.interaction.commandName == 'comprarambiente'){
+				const ambienteSelecionadoCompra = interaction.customId;
+				adicionaPlanoFundo.adicionaPlanoFundo(ambienteSelecionadoCompra, interaction);
+			} else if (interaction.message.interaction.commandName == 'alterarambiente'){
+				const ambienteSelecionadoAlterar = interaction.customId;
+				alteraPlanoFundo.alteraPlanoFundo(ambienteSelecionadoAlterar, interaction);
 			}
 		}
 
