@@ -20,7 +20,7 @@ module.exports = {
 				personagemCafeina: 0,
 				personagemPerifericos: [],
 				personagemFerramentas: [],
-				personagemSalario: 2,
+				personagemSalario: 100,
 				personagemAcumulado: 0,
 				personagemMinutosEstudados: 0,
 				personagemDesafioDiario: false,

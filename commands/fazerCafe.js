@@ -1,14 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fazerCafeAumentar = require('../functions/acumulado/aumentarValor')
 const fazerCafeDiminuir = require('../functions/acumulado/diminuirValor')
-const Personagem = require('../src/models/Personagem.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('fazercafe')
 		.setDescription('Faça café para seus colegas de equipe e ganhe até 10k!'),
 	async execute(interaction) {
-        let personagemProfile = await Personagem.findOne({ personagemId: interaction.user.id});
         try {
             let numeroSorteado = Math.floor(Math.random() * 11)
             if (numeroSorteado == 0){
