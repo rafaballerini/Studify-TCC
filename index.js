@@ -11,7 +11,7 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 const app = require('./src/app.js');
 const port = process.env.PORT || 3000;
-// const Personagem = require('./src/models/Personagem.js')
+const Personagem = require('./src/models/Personagem.js')
 
 app.listen(port, () => {
   console.log(`Servidor escutando em http://localhost:${port}`)
@@ -36,7 +36,7 @@ client.once(Events.ClientReady, c => {
 
 client.login(TOKEN);
 client.on(Events.InteractionCreate, async interaction => {
-	// if (await Personagem.findOne({ personagemId: interaction.user.id})){
+	if (await Personagem.findOne({ personagemId: interaction.user.id}) || interaction.commandName == 'codar'){
 		if (interaction.isButton()) {
 			if (interaction.message.interaction.commandName == 'techguide'){
 				const pressed = interaction.customId;
@@ -81,5 +81,8 @@ client.on(Events.InteractionCreate, async interaction => {
 			console.error(error);
 			await interaction.reply('Houve um erro ao executar esse comando!');
 		}
-	// }
+	} else {
+		await interaction.reply(`❌ Você ainda não iniciou o seu primeiro emprego!
+Para isso, utilize o comando **/codar** primeiro`);
+	}
 })
