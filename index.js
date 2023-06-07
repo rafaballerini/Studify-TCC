@@ -3,6 +3,7 @@ const techguide = require('./functions/techguideBasics')
 const guide = require('./functions/buscaGuide')
 const adicionaPlanoFundo = require('./functions/adicionaPlanoFundo.js')
 const alteraPlanoFundo = require('./functions/alteraPlanoFundo.js')
+const criaPomodoro = require('./functions/criarNovoPomodoro.js')
 const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -38,15 +39,12 @@ client.once(Events.ClientReady, c => {
 
 client.login(TOKEN);
 client.on(Events.InteractionCreate, async interaction => {
+	// console.log(interaction)
 	if (await Personagem.findOne({ personagemId: interaction.user.id}) || interaction.commandName == 'codar'){
 		if (interaction.isButton()) {
 			if (interaction.message.interaction.commandName == 'techguide'){
 				const pressed = interaction.customId;
 				guide.buscaGuide(pressed, interaction);
-			}
-			else if (interaction.customId == 'pomodoro'){
-				const foco = interaction.customId
-				// cria arquivo com função de configuração do pomodoro
 			} else if (interaction.message.interaction.commandName == 'comprarambiente'){
 				const ambienteSelecionadoCompra = interaction.customId;
 				adicionaPlanoFundo.adicionaPlanoFundo(ambienteSelecionadoCompra, interaction);
@@ -64,6 +62,9 @@ client.on(Events.InteractionCreate, async interaction => {
 			else if (interaction.customId == 'docs') {
 				const selected = interaction.values[0];
 				documentacao.buscaDocs(selected, interaction);
+			} else if (interaction.customId == 'pomodoroFoco'){
+				const tempo = interaction.values[0];
+				criaPomodoro.criarNovoPomodoro(tempo, interaction);
 			}
 		}
 
@@ -80,7 +81,7 @@ client.on(Events.InteractionCreate, async interaction => {
 			console.error('Comando não encontrado');
 			return;
 		} 
-
+		
 		try {
 			await command.execute(interaction);
 		}
