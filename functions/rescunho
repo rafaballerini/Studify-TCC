@@ -1,0 +1,56 @@
+const { joinVoiceChannel, createAudioPlayer, createAudioResource, NoSubscriberBehavior } = require('@discordjs/voice');
+const ytdl = require('ytdl-core');
+
+let voiceConnection = null;
+let studyTimer = null; 
+let studyTime = 0;
+
+
+
+studyTimer = setTimeout(() => {
+    // inicio dos estudos
+
+    // Código para reiniciar a reprodução da playlist
+    const stream = ytdl(url, { filter: 'audioonly' });
+    player.play(resource);
+    connection.subscribe(player);
+
+    // Calcula o tempo total de estudo
+    studyTime += tempoPomodoro;
+}, tempoPomodoro * 60000); // Multiplica o tempo por 60000 para converter para milissegundos
+
+
+
+
+studyTimer = setTimeout(() => {
+    // Código para reproduzir o arquivo de áudio presente no projeto
+    // voiceConnection.play('./caminho/do/arquivo/audio.mp3');
+
+    // Código para reiniciar a reprodução da playlist
+    const stream = ytdl(url, { filter: 'audioonly' });
+    const dispatcher = voiceConnection.play(stream);
+
+    // Calcula o tempo total de estudo
+    studyTime += tempoPomodoro;
+}, tempoPomodoro * 60000); // Multiplica o tempo por 60000 para converter para milissegundos
+
+clearTimeout(studyTimer); // Limpa o timer de estudo
+
+// Código para reproduzir o áudio de finalização dos estudos
+// voiceConnection.play('./caminho/do/arquivo/finalizacao.mp3');
+
+voiceConnection.disconnect(); // Desconecta do canal de voz
+voiceConnection = null; // Reseta a conexão de voz
+
+client.on('voiceStateUpdate', (oldState, newState) => {
+if (!voiceConnection || !voiceConnection.channel) return;
+
+if (oldState.member.id === client.user.id && !newState.channel) {
+    setTimeout(() => {
+    if (!voiceConnection || !voiceConnection.channel) {
+        voiceConnection.disconnect();
+        voiceConnection = null;
+    }
+    }, 60000);
+}
+});

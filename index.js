@@ -4,7 +4,7 @@ const guide = require('./functions/buscaGuide')
 const adicionaPlanoFundo = require('./functions/adicionaPlanoFundo.js')
 const alteraPlanoFundo = require('./functions/alteraPlanoFundo.js')
 const criaPomodoro = require('./functions/criarNovoPomodoro.js')
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
+const { Client, ActivityType, Events, GatewayIntentBits, Collection } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
 const { TOKEN } = process.env;
@@ -35,6 +35,7 @@ for (const file of commandFiles) {
 
 client.once(Events.ClientReady, c => {
 	console.log(`${c.user.tag} está online!`);
+	client.user.setActivity("🍅 Bora estudar?", { type: ActivityType.Listening });
 });
 
 client.login(TOKEN);
