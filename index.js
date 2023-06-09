@@ -66,7 +66,7 @@ client.on(Events.InteractionCreate, async interaction => {
 				documentacao.buscaDocs(selected, interaction);
 			} else if (interaction.customId == 'pomodoroFoco'){
 				const tempo = interaction.values[0];
-				criaPomodoro.criarNovoPomodoro(tempo, interaction);
+				criaPomodoro.criarNovoPomodoro(tempo, interaction, client);
 			}
 		}
 
