@@ -1,7 +1,7 @@
 module.exports = {
-	async buscaTempo(tempo, interaction) {
+	async buscaTempoFoco(tempo) {
         const tempos = {
-            'vinteCincoCinco': 25,
+            'vinteCincoCinco': 0.5,
             'trintaDez': 30,
             'quarentaCincoVinte': 40,
             'cinquentaTrinta': 50,

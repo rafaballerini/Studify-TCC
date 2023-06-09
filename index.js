@@ -20,7 +20,8 @@ app.listen(port, () => {
   console.log(`Servidor escutando em http://localhost:${port}`)
 })
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds,
+GatewayIntentBits.GuildVoiceStates] });
 client.commands = new Collection();
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
