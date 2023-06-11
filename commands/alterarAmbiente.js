@@ -5,8 +5,12 @@ const row = new ActionRowBuilder()
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('alterarambiente')
-		.setDescription('Altere seu ambiente de trabalho para aparecer no fundo do seu perfil!'),
+		.setName('alterar')
+		.setDescription('Altere algo no seu perfil')
+		.addSubcommand(subcommand =>
+			subcommand
+				.setName('ambiente')
+				.setDescription('Altere seu ambiente de trabalho para aparecer no fundo do seu perfil!')),
 	async execute(interaction) {
         let personagemProfile = await Personagem.findOne({ personagemId: interaction.user.id})
 		if (row.components.length !== 0){

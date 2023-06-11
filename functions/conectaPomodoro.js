@@ -15,7 +15,7 @@ module.exports = {
             vC = await client.channels.cache.get(interaction.member.voice.channelId);
         }
         let personagemProfile = await Personagem.findOne({ personagemId: interaction.user.id})
-        let url= "https://youtu.be/SU0lQsE0kU8"
+        let url= personagemProfile.personagemPlaylist
         const filePathDescanso = path.join(__dirname, '../assets/yooDescanso.m4a'); 
         const filePathFoco = path.join(__dirname, '../assets/yooFoco.m4a');   
         let tempoPomodoroDescanso = await buscaTempoDescanso.buscaTempoDescanso(tempo)

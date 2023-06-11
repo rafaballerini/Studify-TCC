@@ -4,8 +4,13 @@ const fazerCafeDiminuir = require('../functions/acumulado/diminuirValor')
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('fazercafe')
-		.setDescription('Faça café para seus colegas de equipe e ganhe até 10k!'),
+		.setName('fazer')
+		.setDescription('Faça algo para ganhar moedas')
+        .addSubcommand(subcommand =>
+			subcommand
+				.setName('cafe')
+				.setDescription('Faça café para seus colegas de equipe e ganhe até 10k!')),
+        
 	async execute(interaction) {
         try {
             let numeroSorteado = Math.floor(Math.random() * 11)

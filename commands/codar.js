@@ -25,6 +25,7 @@ module.exports = {
 				personagemMinutosEstudados: 0,
 				personagemDesafioDiario: false,
 				personagemPremioDiario: false,
+                personagemPlaylist: "https://www.youtube.com/watch?v=z22tv0jjr94"
             })
 
             try {

@@ -41,16 +41,15 @@ client.once(Events.ClientReady, c => {
 
 client.login(TOKEN);
 client.on(Events.InteractionCreate, async interaction => {
-	// console.log(interaction)
 	if (await Personagem.findOne({ personagemId: interaction.user.id}) || interaction.commandName == 'codar'){
 		if (interaction.isButton()) {
 			if (interaction.message.interaction.commandName == 'techguide'){
 				const pressed = interaction.customId;
 				guide.buscaGuide(pressed, interaction);
-			} else if (interaction.message.interaction.commandName == 'comprarambiente'){
+			} else if (interaction.message.interaction.commandName == 'comprar ambiente'){
 				const ambienteSelecionadoCompra = interaction.customId;
 				adicionaPlanoFundo.adicionaPlanoFundo(ambienteSelecionadoCompra, interaction);
-			} else if (interaction.message.interaction.commandName == 'alterarambiente'){
+			} else if (interaction.message.interaction.commandName == 'alterar ambiente'){
 				const ambienteSelecionadoAlterar = interaction.customId;
 				alteraPlanoFundo.alteraPlanoFundo(ambienteSelecionadoAlterar, interaction);
 			}

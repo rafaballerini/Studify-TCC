@@ -2,8 +2,12 @@ const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = re
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('comprarambiente')
-		.setDescription('Compre mais opções para aparecerem no fundo do seu perfil!'),
+		.setName('comprar')
+		.setDescription('Compre algo para seu perfil')
+		.addSubcommand(subcommand =>
+			subcommand
+				.setName('ambiente')
+				.setDescription('Compre mais opções de ambiente de trabalho para aparecerem no fundo do seu perfil!')),
 	async execute(interaction) {
 		await interaction.reply({ content: 'Em qual desses lugares você gostaria de trabalhar?', components: [row] });
 	},
