@@ -17,7 +17,10 @@ const personagemSchema = new mongoose.Schema(
         personagemMinutosEstudados: {type: Number, required: true},
         personagemDesafioDiario: {type: Boolean, required: true},
         personagemPremioDiario: {type: Boolean, required: true},
-        personagemPlaylist: {type: String, required: true}
+        personagemPlaylist: {type: String, required: true},
+        personagemDesafioNumero: {type: Number, required: true},
+        personagemDesafioDiario: {type: Boolean, required: true},
+        personagemDesafioData: {type: String, required: true},
     }
 );
 

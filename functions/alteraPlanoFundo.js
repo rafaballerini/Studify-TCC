@@ -5,7 +5,7 @@ module.exports = {
         let personagemProfile = await Personagem.findOne({ personagemId: interaction.user.id})
         if (personagemProfile.personagemPlanoFundo == ambienteSelecionado){
             await interaction.reply(`❗️ Você já está utilizando esse ambiente de trabalho!
-Utilize o comando **/perfil** para visualizar ou **/comprarambiente** para comprar um novo!`);
+Utilize o comando **/perfil** para visualizar ou **/comprar ambiente** para comprar um novo!`);
         } else {
             personagemProfile.personagemPlanoFundo = ambienteSelecionado;
             await personagemProfile.save()
