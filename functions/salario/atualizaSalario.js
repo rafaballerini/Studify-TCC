@@ -12,8 +12,5 @@ module.exports = {
             personagemProfile.personagemSalarioData = Date.now()
             personagemProfile.save()
         }
-
-        console.log(horasCompletas);
-        console.log(personagemProfile.personagemAcumulado);
     }
 }

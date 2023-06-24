@@ -22,21 +22,21 @@ module.exports = {
 				personagemFerramentas: [],
 				personagemSalario: 10,
                 personagemSalarioData: Date.now(),
-				personagemAcumulado: 5000000,
-				personagemMinutosEstudados: 0,
+				personagemAcumulado: 0,
+				personagemMinutosEstudados: 10000,
 				personagemDesafioDiario: false,
 				personagemPremioDiario: false,
                 personagemPlaylist: "https://www.youtube.com/watch?v=z22tv0jjr94",
                 personagemDesafioNumero: 1,
                 personagemDesafioDiario: false,
                 personagemDesafioData: "",
+                personagemBadges: [1],
             })
 
             try {
                 await personagemProfile.save()
                 await interaction.reply({
                     content: `✅ Olá ${personagemProfile.personagemUsername}, **seu primeiro emprego foi iniciado!**
-					
 Aprenda já a fazer café, pois você entrou como **${personagemProfile.personagemCargo}**
 Utilize o comando **/comandos** para descobrir tudo o que pode fazer a partir de agora para aumentar o seu **cargo** e **salário**`
                 })
@@ -46,7 +46,6 @@ Utilize o comando **/comandos** para descobrir tudo o que pode fazer a partir de
         } else {
             await interaction.reply({
                 content: `❗️ **${personagemProfile.personagemUsername}, você já iniciou seu primeiro emprego e hoje está trabalhando como ${personagemProfile.personagemCargo}!**
-
 Utilize o comando **/comandos** para descobrir tudo o que pode fazer para aumentar o seu **cargo** e **salário**`
             })
         }

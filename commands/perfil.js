@@ -51,13 +51,16 @@ module.exports = {
 		context.fillText(`Minutos estudados: ${personagemProfile.personagemMinutosEstudados}`, 1100, 660);
 
 		//Badges
-		const { body } = await request(interaction.user.displayAvatarURL({ extension: 'jpg' }));
-		const avatar = await Canvas.loadImage(await body.arrayBuffer());
-		context.drawImage(avatar, 1080, 200, 80, 80);
-		context.drawImage(avatar, 1180, 200, 80, 80);
-		context.drawImage(avatar, 1280, 200, 80, 80);
-		context.drawImage(avatar, 1380, 200, 80, 80);
-		context.drawImage(avatar, 1480, 200, 80, 80);
+		context.font = '40px sans-serif';
+		context.fillText(`🎤`, 1100, 210);
+		context.fillText(`🎤`, 1200, 210);
+		context.fillText(`🎤`, 1300, 210);
+		context.fillText(`🎤`, 1400, 210);
+		context.fillText(`🎤`, 1500, 210);
+		context.fillText(`🎤`, 1150, 290);
+		context.fillText(`🎤`, 1250, 290);
+		context.fillText(`🎤`, 1350, 290);
+		context.fillText(`🎤`, 1450, 290);
 
 		// cria o arquivo da imagem final
 		const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'perfil.png' });

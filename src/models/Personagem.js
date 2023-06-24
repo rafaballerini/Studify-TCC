@@ -22,6 +22,7 @@ const personagemSchema = new mongoose.Schema(
         personagemDesafioNumero: {type: Number, required: true},
         personagemDesafioDiario: {type: Boolean, required: true},
         personagemDesafioData: {type: String},
+        personagemBadges: {type: [Number], required: true}
     }
 );
 
