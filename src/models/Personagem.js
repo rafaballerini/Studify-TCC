@@ -13,6 +13,7 @@ const personagemSchema = new mongoose.Schema(
         personagemPerifericos: {type: [Number], required: true},
         personagemFerramentas: {type: [Number], required: true},
         personagemSalario: {type: Number, required: true},
+        personagemSalarioData: {type: Date, required: true},
         personagemAcumulado: {type: Number, required: true},
         personagemMinutosEstudados: {type: Number, required: true},
         personagemDesafioDiario: {type: Boolean, required: true},
@@ -20,7 +21,7 @@ const personagemSchema = new mongoose.Schema(
         personagemPlaylist: {type: String, required: true},
         personagemDesafioNumero: {type: Number, required: true},
         personagemDesafioDiario: {type: Boolean, required: true},
-        personagemDesafioData: {type: String, required: true},
+        personagemDesafioData: {type: String},
     }
 );
 

@@ -22,10 +22,12 @@ module.exports = {
 };
 
 function adicionarBotao(ambiente) {
-	row.addComponents(
-		new ButtonBuilder()
-			.setCustomId(ambiente)
-			.setLabel(ambiente)
-			.setStyle(ButtonStyle.Primary)
-	);
+	if (ambiente !== 'basico'){
+		row.addComponents(
+			new ButtonBuilder()
+				.setCustomId(ambiente)
+				.setLabel(ambiente)
+				.setStyle(ButtonStyle.Primary)
+		);
+	}
 }

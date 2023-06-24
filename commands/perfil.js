@@ -3,6 +3,7 @@ const Canvas = require('@napi-rs/canvas');
 const { request } = require('undici');
 const Personagem = require('../src/models/Personagem.js')
 const planoFundo = require('../functions/buscaPlanoFundo.js');
+const atualizaSalario = require('../functions/salario/atualizaSalario.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -10,6 +11,7 @@ module.exports = {
 		.setDescription('Visualize as estatísticas do seu perfil'),
 
 	async execute(interaction) {
+		atualizaSalario.atualizaSalario(interaction);
 		let personagemProfile = await Personagem.findOne({ personagemId: interaction.user.id})
 
 		// cria a imagem e o fundo
@@ -34,13 +36,13 @@ module.exports = {
 		const salario = await Canvas.loadImage('./assets/money.png');
 		context.drawImage(salario, 1100, 310, 50, 50);
 		context.font = '28px sans-serif';
-		context.fillText(`Salário: ${personagemProfile.personagemSalario}k/hora`, 1100, 400);
+		context.fillText(`Salário: ${personagemProfile.personagemSalario} ballecoins/hora`, 1100, 400);
 
 		// escrever acumulado do usuário
 		const acumulado = await Canvas.loadImage('./assets/piggy-bank.png');
 		context.drawImage(acumulado, 1100, 440, 50, 50);
 		context.font = '28px sans-serif';
-		context.fillText(`Acumulado: ${personagemProfile.personagemAcumulado}k`, 1100, 530);
+		context.fillText(`Acumulado: ${personagemProfile.personagemAcumulado} ballecoins`, 1100, 530);
 
 		// escrever minutos estudados do usuário
 		const minutos = await Canvas.loadImage('./assets/pomodoro.png');
