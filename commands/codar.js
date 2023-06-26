@@ -19,6 +19,7 @@ module.exports = {
 				personagemSistemaOperacional: 0,
 				personagemCafeina: 0,
                 personagemCafeImpecavel: 0,
+                personagemCafeData: Date.now(),
 				personagemPerifericos: [],
 				personagemFerramentas: [],
 				personagemSalario: 10,

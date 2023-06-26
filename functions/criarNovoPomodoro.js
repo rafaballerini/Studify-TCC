@@ -9,7 +9,7 @@ module.exports = {
         }
         await interaction.reply(`✅ Seus estudos começaram!
 **Você precisa continuar conectado(a) no canal de voz até fim do tempo de foco**, senão não serão contados os minutos que você estudar
-Caso queria ouvir uma playlist diferente, use **/playlist** e envie a URL de uma playlist do Youtube!`);
+Caso queria ouvir uma playlist diferente, desconecte, use **/playlist**, envie a URL de uma nova playlist do Youtube e recomece seu Pomodoro!`);
 
         conectaPomodoro.conectaPomodoro(tempo, interaction, client)
 
