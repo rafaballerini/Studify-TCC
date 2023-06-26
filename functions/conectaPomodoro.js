@@ -50,6 +50,7 @@ module.exports = {
                 estudoAtual += tempoPomodoroFoco
                 ciclos += 1
                 personagemProfile.personagemMinutosEstudados += tempoPomodoroFoco
+                personagemProfile.personagemCiclosPomodoro += 1
                 personagemProfile.save()
                 interaction.channel.send(`📚 Boa! ${ciclos}° ciclo concluído, bora continuar!`)
             

@@ -52,15 +52,33 @@ module.exports = {
 
 		//Badges
 		context.font = '40px sans-serif';
-		context.fillText(`🎤`, 1100, 210);
-		context.fillText(`🎤`, 1200, 210);
-		context.fillText(`🎤`, 1300, 210);
-		context.fillText(`🎤`, 1400, 210);
-		context.fillText(`🎤`, 1500, 210);
-		context.fillText(`🎤`, 1150, 290);
-		context.fillText(`🎤`, 1250, 290);
-		context.fillText(`🎤`, 1350, 290);
-		context.fillText(`🎤`, 1450, 290);
+		if (personagemProfile.personagemBadges.includes(1)){
+			context.fillText(`💼`, 1100, 210);
+		}
+		if (personagemProfile.personagemBadges.includes(2)){
+			context.fillText(`👩🏻‍🏫`, 1200, 210);
+		}
+		if (personagemProfile.personagemBadges.includes(3)){
+			context.fillText(`💰`, 1300, 210);
+		}
+		if (personagemProfile.personagemBadges.includes(4)){
+			context.fillText(`🗡️`, 1400, 210);
+		}
+		if (personagemProfile.personagemBadges.includes(5)){
+			context.fillText(`💸`, 1500, 210);
+		}
+		if (personagemProfile.personagemBadges.includes(6)){
+			context.fillText(`🗺️`, 1150, 290);
+		}
+		if (personagemProfile.personagemBadges.includes(7)){
+			context.fillText(`☕️`, 1250, 290);
+		}
+		if (personagemProfile.personagemBadges.includes(8)){
+			context.fillText(`🍅`, 1350, 290);
+		}
+		if (personagemProfile.personagemBadges.includes(9)){
+			context.fillText(`🏆`, 1450, 290);
+		}
 
 		// cria o arquivo da imagem final
 		const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'perfil.png' });

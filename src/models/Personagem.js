@@ -16,13 +16,15 @@ const personagemSchema = new mongoose.Schema(
         personagemSalarioData: {type: Date, required: true},
         personagemAcumulado: {type: Number, required: true},
         personagemMinutosEstudados: {type: Number, required: true},
+        personagemCiclosPomodoro: {type: Number},
         personagemDesafioDiario: {type: Boolean, required: true},
         personagemPremioDiario: {type: Boolean, required: true},
         personagemPlaylist: {type: String, required: true},
         personagemDesafioNumero: {type: Number, required: true},
         personagemDesafioDiario: {type: Boolean, required: true},
         personagemDesafioData: {type: String},
-        personagemBadges: {type: [Number], required: true}
+        personagemBadges: {type: [Number], required: true},
+        personagemCafeImpecavel: {type: Number}
     }
 );
 

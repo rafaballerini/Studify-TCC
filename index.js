@@ -6,6 +6,7 @@ const alteraPlanoFundo = require('./functions/alteraPlanoFundo.js')
 const criaPomodoro = require('./functions/criarNovoPomodoro.js')
 const atualizaSalario = require('./functions/salario/atualizaSalario')
 const verificaCargo = require('./functions/salario/verificaCargo.js')
+const verificaBadges = require('./functions/verificaBadges.js')
 const { Client, ActivityType, Events, GatewayIntentBits, Collection } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -88,7 +89,8 @@ client.on(Events.InteractionCreate, async interaction => {
 		try {
 			await command.execute(interaction);
 			atualizaSalario.atualizaSalario(interaction);
-			verificaCargo.verificaCargo(interaction)
+			verificaCargo.verificaCargo(interaction);
+			verificaBadges.verificaBadges(interaction);
 		}
 		catch (error) {
 			console.error(error);

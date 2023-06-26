@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fazerCafeAumentar = require('../functions/acumulado/aumentarValor')
 const fazerCafeDiminuir = require('../functions/acumulado/diminuirValor')
+const Personagem = require('../src/models/Personagem.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -13,6 +14,7 @@ module.exports = {
         
 	async execute(interaction) {
         try {
+            let personagemProfile = await Personagem.findOne({ personagemId: interaction.user.id})
             let numeroSorteado = Math.floor(Math.random() * 11)
             if (numeroSorteado == 0){
                 fazerCafeDiminuir.diminuirValor(2, interaction);
@@ -36,6 +38,8 @@ module.exports = {
                 })
             } else if (numeroSorteado == 10) {
                 fazerCafeAumentar.aumentarValor(numeroSorteado, interaction);
+                personagemProfile.personagemCafeImpecavel += 1
+                personagemProfile.save()
                 await interaction.reply({
                     content: `☕️ Que café **IMPECÁVEL**! Seus colegas o acharam uma obra de arte e investiram em você **${numeroSorteado}k** para caso decida abrir uma cafeteria!`
                 })
