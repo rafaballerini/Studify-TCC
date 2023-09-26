@@ -52,4 +52,4 @@ Recentemente recebi o título de [Github Star](https://github.com/rafaballerini)
 Você pode acompanhar meu conteúdo no [canal do Youtube](https://youtube.com/rafaellaballerini) e também fazer parte da [nossa comunidade do Discord](https://discord.com/servers/ballerini-789888698673922078
 )
 
-O Studify foi criado com o intuito de auxiliar jovens pessoas desenvolvedoras a estudarem de uma forma gamificada e motivadora, utilizando o próprio Discord como ferramenta. Será o projeto base para apresentação do meu TCC em Engenharia de Software e posteriormetne estará aberto para contribuições open-source!
+O Studify foi criado com o intuito de auxiliar jovens pessoas desenvolvedoras a estudarem de uma forma gamificada e motivadora, utilizando o próprio Discord como ferramenta. Será o projeto base para apresentação do meu TCC em Engenharia de Software e posteriormente estará aberto para contribuições open-source!
